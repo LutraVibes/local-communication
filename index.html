@@ -21,23 +21,24 @@
   <div id="callbox" hidden>
     <h4>Call</h4>
     <p id="callIdDisplay"></p>
-    <div class="video-container">
+    <div class="video-container" id="localVideoContainer">
       <video id="localVideo" autoplay muted></video>
-      <div class="overlay">
-        <img id="localMuteIcon" class="icon" src="mute_icon.png" hidden>
-        <img id="localVideoIcon" class="icon" src="video_off_icon.png" hidden>
+      <div id="localVideoOverlay" class="video-overlay">
+        <span id="localMuteIcon" class="icon" hidden>🔇</span>
+        <span id="localCameraIcon" class="icon" hidden>🎥</span>
       </div>
     </div>
-    <div class="video-container">
+    <div class="video-container" id="remoteVideoContainer" hidden>
       <video id="remoteVideo" autoplay></video>
-      <div class="overlay">
-        <img id="remoteMuteIcon" class="icon" src="mute_icon.png" hidden>
-        <img id="remoteVideoIcon" class="icon" src="video_off_icon.png" hidden>
+      <div id="remoteVideoOverlay" class="video-overlay">
+        <span id="remoteMuteIcon" class="icon" hidden>🔇</span>
+        <span id="remoteCameraIcon" class="icon" hidden>🎥</span>
       </div>
     </div>
     <div id="calloptions">
       <button id="mute">Mute</button>
-      <button id="camera">Camera (toggle)</button>
+      <button id="camera">Camera On</button>
+      <button id="flipCamera">Flip Camera</button>
     </div>
     <div id="callinfo">
       <h5>Call time: <span id="callTime">00:00</span></h5>

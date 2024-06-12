@@ -8,12 +8,12 @@
 </head>
 <body>
   <h1>Local Communication</h1>
-  <div id="selectionbox">
+  <div id="selectionbox" class="menu">
     <h4>Choose an option:</h4>
     <button id="hostc">Host</button>
     <button id="joinc">Join</button>
   </div>
-  <div id="contentbox" hidden>
+  <div id="contentbox" class="menu" hidden>
     <h4>Enter call ID:</h4>
     <input placeholder="Call ID" id="callid">
     <button id="join">Join call</button>
@@ -21,24 +21,24 @@
   <div id="callbox" hidden>
     <h4>Call</h4>
     <p id="callIdDisplay"></p>
-    <div class="video-container" id="localVideoContainer">
+    <div id="localParticipant" class="video-container">
       <video id="localVideo" autoplay muted></video>
       <div id="localVideoOverlay" class="video-overlay">
-        <span id="localMuteIcon" class="icon" hidden>🔇</span>
-        <span id="localCameraIcon" class="icon" hidden>🎥</span>
+        <button id="localMuteButton" class="action-button hidden" title="Mute">&#x1F507;</button>
+        <button id="localCameraButton" class="action-button hidden" title="Turn Camera Off">&#x1F4F7;</button>
+        <button id="flipCameraButton" class="action-button hidden" title="Flip Camera">&#x21BB;</button>
       </div>
     </div>
-    <div class="video-container" id="remoteVideoContainer" hidden>
+    <div id="remoteParticipant" class="video-container" hidden>
       <video id="remoteVideo" autoplay></video>
       <div id="remoteVideoOverlay" class="video-overlay">
-        <span id="remoteMuteIcon" class="icon" hidden>🔇</span>
-        <span id="remoteCameraIcon" class="icon" hidden>🎥</span>
+        <button id="remoteMuteButton" class="action-button hidden" title="Mute">&#x1F507;</button>
+        <button id="remoteCameraButton" class="action-button hidden" title="Turn Camera Off">&#x1F4F7;</button>
       </div>
     </div>
     <div id="calloptions">
       <button id="mute">Mute</button>
       <button id="camera">Camera On</button>
-      <button id="flipCamera">Flip Camera</button>
     </div>
     <div id="callinfo">
       <h5>Call time: <span id="callTime">00:00</span></h5>

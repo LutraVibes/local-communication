@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Communication</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Local Communication</h1>
+  <div id="selectionbox">
+    <h4>Choose an option:</h4>
+    <button id="hostc">Host</button>
+    <button id="joinc">Join</button>
+  </div>
+  <div id="contentbox" hidden>
+    <h4>Enter call ID:</h4>
+    <input placeholder="Call ID (e.g., 1a2b3c)" id="callid">
+    <button id="join">Join call</button>
+  </div>
+  <div id="callbox" hidden>
+    <h4>Call</h4>
+    <p id="callIdDisplay"></p>
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+    <div id="calloptions">
+      <button id="mute">Mute</button>
+      <button id="camera">Camera (toggle)</button>
+    </div>
+    <div id="callinfo">
+      <h5>Call time: <span id="callTime">00:00</span></h5>
+      <h5>People in-call: <span id="callCount">1</span></h5>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

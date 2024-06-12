@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+video {
+  width: 40%;
+  margin: 10px;
+}
+
+#calloptions {
+  margin-top: 10px;
+}
+
+#callinfo {
+  margin-top: 20px;
+}

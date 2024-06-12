@@ -41,6 +41,16 @@ h1 {
   position: relative;
   display: inline-block;
   margin: 20px;
+  width: calc(50% - 40px);
+  max-width: 400px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  border-radius: 10px;
 }
 
 .video-overlay {
@@ -61,6 +71,22 @@ h1 {
 
 .action-button:hover {
   color: #666;
+}
+
+#flipCameraButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#flipCameraButton:hover {
+  background-color: #0056b3;
 }
 
 #calloptions button {

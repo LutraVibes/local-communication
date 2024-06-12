@@ -28,14 +28,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     peer.on('call', call => {
+      console.log('Receiving a call');
       getUserMedia({ video: true, audio: true }).then(stream => {
         call.answer(stream);
         call.on('stream', remoteStream => {
           remoteVideo.srcObject = remoteStream;
         });
+        call.on('close', () => {
+          console.log('Call ended');
+        });
         currentCall = call;
         callBox.hidden = false;
+      }).catch(err => {
+        console.error('Failed to get local stream', err);
       });
+    });
+
+    peer.on('error', err => {
+      console.error('Peer error', err);
     });
   };
 
@@ -45,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
       localVideo.srcObject = stream;
       initPeer();
       callBox.hidden = false;
+    }).catch(err => {
+      console.error('Failed to get local stream', err);
     });
   });
 
@@ -53,28 +65,48 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   joinCallButton.addEventListener('click', () => {
-    const callId = callIdInput.value;
+    const callId = callIdInput.value.trim();
     if (callId) {
+      console.log(`Joining call with ID: ${callId}`);
       getUserMedia({ video: true, audio: true }).then(stream => {
         localStream = stream;
         localVideo.srcObject = stream;
-        const call = peer.call(callId, stream);
-        call.on('stream', remoteStream => {
-          remoteVideo.srcObject = remoteStream;
+        peer = new Peer();
+
+        peer.on('open', () => {
+          const call = peer.call(callId, stream);
+          call.on('stream', remoteStream => {
+            remoteVideo.srcObject = remoteStream;
+          });
+          call.on('close', () => {
+            console.log('Call ended');
+          });
+          currentCall = call;
+          callBox.hidden = false;
         });
-        currentCall = call;
-        callBox.hidden = false;
+
+        peer.on('error', err => {
+          console.error('Peer error', err);
+        });
+      }).catch(err => {
+        console.error('Failed to get local stream', err);
       });
     }
   });
 
   muteButton.addEventListener('click', () => {
-    localStream.getAudioTracks()[0].enabled = !localStream.getAudioTracks()[0].enabled;
-    muteButton.textContent = localStream.getAudioTracks()[0].enabled ? 'Mute' : 'Unmute';
+    if (localStream) {
+      const audioTrack = localStream.getAudioTracks()[0];
+      audioTrack.enabled = !audioTrack.enabled;
+      muteButton.textContent = audioTrack.enabled ? 'Mute' : 'Unmute';
+    }
   });
 
   cameraButton.addEventListener('click', () => {
-    localStream.getVideoTracks()[0].enabled = !localStream.getVideoTracks()[0].enabled;
-    cameraButton.textContent = localStream.getVideoTracks()[0].enabled ? 'Camera Off' : 'Camera On';
+    if (localStream) {
+      const videoTrack = localStream.getVideoTracks()[0];
+      videoTrack.enabled = !videoTrack.enabled;
+      cameraButton.textContent = videoTrack.enabled ? 'Camera Off' : 'Camera On';
+    }
   });
 });

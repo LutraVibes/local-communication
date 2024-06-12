@@ -40,12 +40,12 @@ h1 {
 .video-container {
   position: relative;
   display: inline-block;
-  margin: 20px;
-  width: calc(50% - 40px);
+  width: 49%;
   max-width: 400px;
   border: 2px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
+  margin: 5px;
 }
 
 .video-container video {
@@ -60,17 +60,19 @@ h1 {
 }
 
 .action-button {
-  background: none;
+  background-color: #007bff;
+  color: #fff;
   border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin: 0 10px;
   cursor: pointer;
-  font-size: 24px;
-  color: #333;
-  padding: 5px;
-  margin: 5px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .action-button:hover {
-  color: #666;
+  background-color: #0056b3;
 }
 
 #flipCameraButton {
@@ -86,22 +88,6 @@ h1 {
 }
 
 #flipCameraButton:hover {
-  background-color: #0056b3;
-}
-
-#calloptions button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 18px;
-  margin: 0 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-#calloptions button:hover {
   background-color: #0056b3;
 }
 

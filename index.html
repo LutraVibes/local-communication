@@ -15,14 +15,26 @@
   </div>
   <div id="contentbox" hidden>
     <h4>Enter call ID:</h4>
-    <input placeholder="Call ID (e.g., 1a2b3c)" id="callid">
+    <input placeholder="Call ID" id="callid">
     <button id="join">Join call</button>
   </div>
   <div id="callbox" hidden>
     <h4>Call</h4>
     <p id="callIdDisplay"></p>
-    <video id="localVideo" autoplay muted></video>
-    <video id="remoteVideo" autoplay></video>
+    <div class="video-container">
+      <video id="localVideo" autoplay muted></video>
+      <div class="overlay">
+        <img id="localMuteIcon" class="icon" src="mute_icon.png" hidden>
+        <img id="localVideoIcon" class="icon" src="video_off_icon.png" hidden>
+      </div>
+    </div>
+    <div class="video-container">
+      <video id="remoteVideo" autoplay></video>
+      <div class="overlay">
+        <img id="remoteMuteIcon" class="icon" src="mute_icon.png" hidden>
+        <img id="remoteVideoIcon" class="icon" src="video_off_icon.png" hidden>
+      </div>
+    </div>
     <div id="calloptions">
       <button id="mute">Mute</button>
       <button id="camera">Camera (toggle)</button>
